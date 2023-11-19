@@ -1,6 +1,7 @@
 package br.main;
 
 import br.views.CadastroCliente;
+import br.views.CadastroTecnico;
 
 public class Principal {
 	 public static void main(String[] args) {
@@ -10,5 +11,13 @@ public class Principal {
 	        formCliente.preencherTbl();
 	        
 	        formCliente.setVisible(true);
+	        
+	        CadastroTecnico formTecnico = new CadastroTecnico();
+	        
+	        formTecnico.preencherTbl();
+	        
+	        formTecnico.setVisible(true);
+	        
 	    }
+	 
 }

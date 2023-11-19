@@ -144,30 +144,30 @@ public class CadastroTecnico extends javax.swing.JFrame {
       
         	}
         });
-        txtBuscarCpf = new javax.swing.JTextField();
-        txtBuscarCpf.setToolTipText("Informe um Cpf");
-        txtBuscarCpf.setForeground(new Color(0, 0, 0));
+        txtBuscarId = new javax.swing.JTextField();
+        txtBuscarId.setToolTipText("Informe um Cpf");
+        txtBuscarId.setForeground(new Color(0, 0, 0));
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableClientes = new javax.swing.JTable();
-        tableClientes.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        tableClientes.setForeground(new Color(240, 240, 240));
-        tableClientes.setBackground(new Color(235, 237, 241));
-        tableClientes.addMouseListener(new MouseAdapter() {
+        tableTecnicos = new javax.swing.JTable();
+        tableTecnicos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        tableTecnicos.setForeground(new Color(0, 0, 0));
+        tableTecnicos.setBackground(new Color(235, 237, 241));
+        tableTecnicos.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		
-        		int selectRow = tableClientes.getSelectedRow();
+        		int selectRow = tableTecnicos.getSelectedRow();
         		
-        		txtNome.setText(tableClientes.getValueAt(selectRow, 1).toString());
-        		txtCpf.setText(tableClientes.getValueAt(selectRow, 2).toString());
-        		txtEndereco.setText(tableClientes.getValueAt(selectRow, 3).toString());
-        		txtTelefone.setText(tableClientes.getValueAt(selectRow, 4).toString());
-        		txtEmail.setText(tableClientes.getValueAt(selectRow, 5).toString());
+        		txtNome.setText(tableTecnicos.getValueAt(selectRow, 1).toString());
+        		txtCpf.setText(tableTecnicos.getValueAt(selectRow, 2).toString());
+        		txtEndereco.setText(tableTecnicos.getValueAt(selectRow, 3).toString());
+        		txtTelefone.setText(tableTecnicos.getValueAt(selectRow, 4).toString());
+        		txtEmail.setText(tableTecnicos.getValueAt(selectRow, 5).toString());
         		
         		
         	}
         });
-        tableClientes.addFocusListener(new FocusAdapter() {
+        tableTecnicos.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
         		jButtonExcluir.setEnabled(true);
@@ -240,8 +240,7 @@ public class CadastroTecnico extends javax.swing.JFrame {
         btnBuscar.setBackground(new Color(240, 240, 240));
         btnBuscar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		
-        		String id = txtBuscarCpf.getText();
+        		long id = Long.parseLong(txtBuscarId.getText());
         		
         		TecnicoDAO tecDao = new TecnicoDAO();
         		Tecnico tec = new Tecnico();
@@ -289,7 +288,7 @@ public class CadastroTecnico extends javax.swing.JFrame {
         			.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
         			.addComponent(btnBuscar)
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(txtBuscarCpf, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+        			.addComponent(txtBuscarId, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
         			.addGap(19))
         );
         jPanel2Layout.setVerticalGroup(
@@ -300,14 +299,14 @@ public class CadastroTecnico extends javax.swing.JFrame {
         				.addComponent(jButtonCadastrar)
         				.addComponent(jButtonAlterar)
         				.addComponent(jButtonExcluir)
-        				.addComponent(txtBuscarCpf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(txtBuscarId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
         				.addComponent(btnLimpar))
         			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2.setLayout(jPanel2Layout);
 
-        tableClientes.setModel(new DefaultTableModel(
+        tableTecnicos.setModel(new DefaultTableModel(
         	new Object[][] {
         		{null, null, null, null, null, null},
         		{null, null, null, null, null, null},
@@ -334,10 +333,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		"Id", "Nome", "Cpf", "Endereco", "Telefone", "Email"
         	}
         ));
-        tableClientes.getColumnModel().getColumn(0).setPreferredWidth(40);
-        tableClientes.getColumnModel().getColumn(1).setPreferredWidth(90);
-        tableClientes.getColumnModel().getColumn(3).setPreferredWidth(90);
-        jScrollPane2.setViewportView(tableClientes);
+        tableTecnicos.getColumnModel().getColumn(0).setPreferredWidth(40);
+        tableTecnicos.getColumnModel().getColumn(1).setPreferredWidth(90);
+        tableTecnicos.getColumnModel().getColumn(3).setPreferredWidth(90);
+        jScrollPane2.setViewportView(tableTecnicos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
@@ -453,10 +452,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
     	
     	
     	long eventMask = 0;
-		Cliente cli = new Cliente(eventMask, nome, cpf, endereco, telefone, email);
-    	ClienteDAO cliDAO = new ClienteDAO();
+		Tecnico tec = new Tecnico(eventMask, nome, cpf, endereco, telefone, email);
+		TecnicoDAO tecDAO = new TecnicoDAO();
     	
-    	 if(cliDAO.inserirCliente(cli)){	
+    	 if(tecDAO.inserirTecnico(tec)){	
     		 
              JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso!","Resultado",JOptionPane.INFORMATION_MESSAGE);
              
@@ -479,15 +478,15 @@ public class CadastroTecnico extends javax.swing.JFrame {
      * @param args the command line arguments
      */     
     public void preencherTbl() {
-    	ClienteDAO cliDAO = new ClienteDAO();
-    	List<Cliente> lista = cliDAO.listarClientes();
+    	TecnicoDAO tecDAO = new TecnicoDAO();
+    	List<Tecnico> lista = tecDAO.listarTecnicos();
     	
-    	DefaultTableModel modelo = (DefaultTableModel) tableClientes.getModel();
+    	DefaultTableModel modelo = (DefaultTableModel) tableTecnicos.getModel();
     	modelo.setRowCount(0);
     	
-    	for (Cliente cliente : lista) {
-    		modelo.addRow(new Object[]{cliente.getId(),cliente.getNome(), cliente.getCpf(), cliente.getEndereco(), 
-    					cliente.getTelefone(), cliente.getEmail()});
+    	for (Tecnico tecnico : lista) {
+    		modelo.addRow(new Object[]{tecnico.getId(),tecnico.getNome(), tecnico.getCpf(), tecnico.getEndereco(), 
+    				tecnico.getTelefone(), tecnico.getEmail()});
     	}
     }
     
@@ -539,13 +538,13 @@ public class CadastroTecnico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tableClientes;
+    private javax.swing.JTable tableTecnicos;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtTelefone;
-    private javax.swing.JTextField txtBuscarCpf;
+    private javax.swing.JTextField txtBuscarId;
     // End of variables declaration//GEN-END:variables
 	public void exibeMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);

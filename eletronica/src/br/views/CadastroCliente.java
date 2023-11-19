@@ -150,7 +150,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
         tableClientes.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        tableClientes.setForeground(new Color(240, 240, 240));
+        tableClientes.setForeground(new Color(0, 0, 0));
         tableClientes.setBackground(new Color(235, 237, 241));
         tableClientes.addMouseListener(new MouseAdapter() {
         	@Override
