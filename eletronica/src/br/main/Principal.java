@@ -6,6 +6,9 @@ public class Principal {
 	 public static void main(String[] args) {
 	        
 	        CadastroCliente formCliente = new CadastroCliente();
+	        
+	        formCliente.preencherTbl();
+	        
 	        formCliente.setVisible(true);
 	    }
 }
