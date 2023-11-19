@@ -56,7 +56,7 @@ public class TecnicoDAO {
 	
 	public boolean atualizarTecnico(Tecnico tecnico){
         Connection con = new ConnectionFactory().getConnection();
-        String sql = "update tecnicos set nome = ?, endereco = ?, telefone = ?, email = ? where id = ?";
+        String sql = "update tecnicos set nome = ?, endereco = ?, telefone = ?, email = ?, cpf = ? where id = ?";
         
         try {
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -66,6 +66,7 @@ public class TecnicoDAO {
                 stmt.setString(3, tecnico.getTelefone());
                 stmt.setString(4, tecnico.getEmail());
                 stmt.setString(5, tecnico.getCpf());
+                stmt.setLong(6, tecnico.getId());
          
                 stmt.execute();
             }
@@ -79,7 +80,7 @@ public class TecnicoDAO {
 	
 	public Tecnico buscarTecnicos(Long id){
         Connection con = new ConnectionFactory().getConnection();   
-        String sql = "SELECT * FROM tecnicos where id = ?";
+        String sql = "SELECT * FROM tecnicos WHERE id = ?";
         
         ResultSet rs; 
         

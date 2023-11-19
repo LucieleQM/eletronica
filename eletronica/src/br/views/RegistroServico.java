@@ -29,6 +29,8 @@ import java.awt.event.MouseEvent;
 
 import java.awt.Font;
 import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -65,6 +67,12 @@ public class RegistroServico extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtNome.setBackground(new Color(235, 237, 241));
         txtPreco = new javax.swing.JTextField();
+        txtPreco.addFocusListener(new FocusAdapter() {
+        	@Override
+        	public void focusLost(FocusEvent e) {
+        		jButtonCadastrar.setEnabled(true);
+        	}
+        });
         txtPreco.setBackground(new Color(235, 237, 241));
         jPanel2 = new javax.swing.JPanel();
         jPanel2.setBackground(new Color(235, 237, 241));
@@ -79,11 +87,12 @@ public class RegistroServico extends javax.swing.JFrame {
         		
         		String nome, descricao;
         		
+        		long id = Long.parseLong(txtId.getText());
         		nome = txtNome.getText();
                 descricao = txtDescricao.getText();
                 double preco = Double.parseDouble(txtPreco.getText());
-                
-                Servico sev = new Servico();
+
+                Servico sev = new Servico(id,  nome, descricao, preco);
                 ServicoDAO sevDAO = new ServicoDAO();
                 
                 if(sevDAO.atualizarServico(sev)){
@@ -103,9 +112,9 @@ public class RegistroServico extends javax.swing.JFrame {
             nome = txtNome.getText();
             descricao = txtDescricao.getText();
             double preco = Double.parseDouble(txtPreco.getText());
+            long id = Long.parseLong(txtId.getText());
             
-  
-            Servico sev = new Servico();
+            Servico sev = new Servico(id,nome, descricao, preco);
          
             ServicoDAO sevDAO = new ServicoDAO();
                 
@@ -136,9 +145,10 @@ public class RegistroServico extends javax.swing.JFrame {
         		
         		int selectRow = tableServicos.getSelectedRow();
         		
+        		txtId.setText(tableServicos.getValueAt(selectRow, 0).toString());
         		txtNome.setText(tableServicos.getValueAt(selectRow, 1).toString());
-        		txtDescricao.setText(tableServicos.getValueAt(selectRow, 2).toString());
         		txtPreco.setText(tableServicos.getValueAt(selectRow, 3).toString());
+        		txtDescricao.setText(tableServicos.getValueAt(selectRow, 2).toString());
         		
         	}
         });
@@ -225,6 +235,7 @@ public class RegistroServico extends javax.swing.JFrame {
         		txtNome.setText(null);
         		txtPreco.setText(null);
         		txtDescricao.setText(null);
+        		txtId.setText(null);
         		
         		btnLimpar.setEnabled(false);
         	}
@@ -265,29 +276,29 @@ public class RegistroServico extends javax.swing.JFrame {
 
         tableServicos.setModel(new DefaultTableModel(
         	new Object[][] {
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
-        		{null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
+        		{null, null, null, null},
         	},
         	new String[] {
-        		"Nome", "Pre\u00E7o", "Descri\u00E7\u00E3o"
+        		"Id", "Nome", "Descri\u00E7\u00E3o", "Preco"
         	}
         ));
         tableServicos.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -297,6 +308,13 @@ public class RegistroServico extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tableServicos);
         
         txtDescricao = new JTextArea();
+        
+        lblNewLabel = new JLabel("Id");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNewLabel.setForeground(new Color(55, 52, 95));
+        
+        txtId = new JTextField();
+        txtId.setColumns(10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
@@ -325,7 +343,11 @@ public class RegistroServico extends javax.swing.JFrame {
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 357, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(203, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(txtId, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(lblNewLabel))
+        			.addGap(49))
         );
         jPanel1Layout.setVerticalGroup(
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
@@ -343,7 +365,13 @@ public class RegistroServico extends javax.swing.JFrame {
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(jLabel4)
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGap(12)
+        					.addComponent(lblNewLabel)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
         			.addGap(26)
         			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
@@ -381,11 +409,10 @@ public class RegistroServico extends javax.swing.JFrame {
   
     	nome = txtNome.getText();
     	descricao = txtDescricao.getText();
-    	double preco = Double.parseDouble(txtPreco.getText());
+    	double preco = Double.parseDouble(txtPreco.getText());	
     	
-    	
-    	long eventMask = 0;
-		Servico sev = new Servico(eventMask, nome, descricao, preco);
+    	long id = 0;
+		Servico sev = new Servico(id, nome, descricao, preco);
 		ServicoDAO sevDAO = new ServicoDAO();
     	
     	 if(sevDAO.inserirServico(sev)){	
@@ -470,6 +497,8 @@ public class RegistroServico extends javax.swing.JFrame {
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtBuscarId;
     private JTextArea txtDescricao;
+    private JLabel lblNewLabel;
+    private JTextField txtId;
     // End of variables declaration//GEN-END:variables
 	public void exibeMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);

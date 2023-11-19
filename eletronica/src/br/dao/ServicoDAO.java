@@ -53,7 +53,7 @@ public class ServicoDAO {
 	
 	public boolean atualizarServico(Servico servico){
         Connection con = new ConnectionFactory().getConnection();
-        String sql = "update servicos set nome = ?, descricao = ?, preco_base = ? where id = ?";
+        String sql = "update tiposservicos set nome = ?, descricao = ?, preco_base = ? where id = ?";
         
         try {
             try (PreparedStatement stmt = con.prepareStatement(sql)) {

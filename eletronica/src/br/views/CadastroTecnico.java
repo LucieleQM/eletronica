@@ -28,6 +28,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -96,13 +98,15 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		
         		String nome, cpf, endereco, telefone, email;
         		
+        		long id = Long.parseLong(txtId.getText());
+        		
         		nome = txtNome.getText();
                 cpf = txtCpf.getText();
                 endereco = txtEndereco.getText();
                 telefone = txtTelefone.getText();
                 email = txtEmail.getText();
                 
-                Tecnico tec = new Tecnico(0, nome,cpf, endereco, telefone,email);
+                Tecnico tec = new Tecnico(id, nome,cpf, endereco, telefone,email);
                 
                 TecnicoDAO tecDAO = new TecnicoDAO();
                 
@@ -120,14 +124,15 @@ public class CadastroTecnico extends javax.swing.JFrame {
         	public void actionPerformed(ActionEvent e) {
         		
         	String nome, cpf, endereco, telefone, email;
-                
+            
+        	long id = Long.parseLong(txtId.getText());
             nome = txtNome.getText();
             cpf = txtCpf.getText();
             endereco = txtEndereco.getText();
             telefone = txtTelefone.getText();
             email = txtEmail.getText();
   
-            Tecnico tec = new Tecnico(0, nome,cpf, endereco, telefone,email);
+            Tecnico tec = new Tecnico(id, nome,cpf, endereco, telefone,email);
                 
             TecnicoDAO tecDAO = new TecnicoDAO();
                 
@@ -158,6 +163,7 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		
         		int selectRow = tableTecnicos.getSelectedRow();
         		
+        		txtId.setText(tableTecnicos.getValueAt(selectRow, 0).toString());
         		txtNome.setText(tableTecnicos.getValueAt(selectRow, 1).toString());
         		txtCpf.setText(tableTecnicos.getValueAt(selectRow, 2).toString());
         		txtEndereco.setText(tableTecnicos.getValueAt(selectRow, 3).toString());
@@ -337,6 +343,13 @@ public class CadastroTecnico extends javax.swing.JFrame {
         tableTecnicos.getColumnModel().getColumn(1).setPreferredWidth(90);
         tableTecnicos.getColumnModel().getColumn(3).setPreferredWidth(90);
         jScrollPane2.setViewportView(tableTecnicos);
+        
+        JLabel lblNewLabel = new JLabel("Id");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNewLabel.setForeground(new Color(55, 52, 95));
+        
+        txtId = new JTextField();
+        txtId.setColumns(10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
@@ -368,7 +381,9 @@ public class CadastroTecnico extends javax.swing.JFrame {
         							.addPreferredGap(ComponentPlacement.RELATED)
         							.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
         								.addComponent(jLabel5)
-        								.addComponent(txtTelefone, 142, 142, Short.MAX_VALUE)))
+        								.addComponent(txtTelefone, 142, 142, Short.MAX_VALUE)
+        								.addComponent(lblNewLabel)
+        								.addComponent(txtId, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
         						.addComponent(txtCpf))
         					.addContainerGap())
         				.addGroup(jPanel1Layout.createSequentialGroup()
@@ -403,13 +418,18 @@ public class CadastroTecnico extends javax.swing.JFrame {
         							.addComponent(txtEndereco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         							.addPreferredGap(ComponentPlacement.RELATED)
         							.addComponent(jLabel6))
-        						.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(jPanel1Layout.createSequentialGroup()
+        							.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(lblNewLabel)))
         					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
         			.addGap(18)
         			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
-        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
         			.addContainerGap())
         );
         jPanel1.setLayout(jPanel1Layout);
@@ -545,6 +565,7 @@ public class CadastroTecnico extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtTelefone;
     private javax.swing.JTextField txtBuscarId;
+    private JTextField txtId;
     // End of variables declaration//GEN-END:variables
 	public void exibeMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);

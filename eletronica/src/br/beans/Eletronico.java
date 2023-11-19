@@ -1,6 +1,6 @@
 package br.beans;
 
-import br.beans.Cliente;
+import br.beans.Eletronico;
 
 public class Eletronico {
 	private String numSerial;
@@ -8,29 +8,17 @@ public class Eletronico {
 	private String marca;
 	private String modelo;
 	private Cliente cliente;
-	private String avarias;
-	private String defeito;
 
 	public Eletronico() {
 		
 	}
-	public Eletronico(String numSerial,String tipo,String marca, String modelo, Cliente cliente, String avarias, String defeito) {
+
+	public Eletronico(String numSerial, String tipo, String marca, String modelo, Cliente cliente) {
 		this.numSerial = numSerial;
 		this.tipo = tipo;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cliente = cliente;
-		this.avarias = avarias;
-		this.defeito = defeito;
-	}
-
-
-	public String getAvarias() {
-		return avarias;
-	}
-
-	public void setAvarias(String avarias) {
-		this.avarias = avarias;
 	}
 
 	public Cliente getCliente() {
@@ -74,13 +62,5 @@ public class Eletronico {
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
-	}
-
-	public String getDefeito() {
-		return defeito;
-	}
-
-	public void setDefeito(String defeito) {
-		this.defeito = defeito;
 	}
 }
