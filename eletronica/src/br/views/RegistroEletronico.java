@@ -28,18 +28,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JSpinner;
 
 /**
  *
  * @author adrya
  */
-public class CadastroTecnico extends javax.swing.JFrame {
+public class RegistroEletronico extends javax.swing.JFrame {
 
    // private final CadastroClienteController controller;
 	/**
      * Creates new form NewJFrame
      */
-    public CadastroTecnico() {
+    public RegistroEletronico() {
         initComponents();
        // controller = new CadastroClienteController(this);
     }
@@ -65,24 +69,20 @@ public class CadastroTecnico extends javax.swing.JFrame {
         jLabel5.setFont(new Font("Tahoma", Font.BOLD, 11));
         jLabel6 = new javax.swing.JLabel();
         jLabel6.setFont(new Font("Tahoma", Font.BOLD, 11));
-        txtNome = new javax.swing.JTextField();
-        txtNome.setBackground(new Color(235, 237, 241));
-        txtEndereco = new javax.swing.JTextField();
-        txtEndereco.setBackground(new Color(235, 237, 241));
-        txtCpf = new javax.swing.JTextField();
-        txtCpf.setBackground(new Color(235, 237, 241));
-        txtEmail = new javax.swing.JTextField();
-        txtEmail.setBackground(new Color(235, 237, 241));
-        txtTelefone = new javax.swing.JTextField();
-        txtTelefone.setBackground(new Color(235, 237, 241));
-        txtTelefone.addFocusListener(new FocusAdapter() {
+        txtNumSerial = new javax.swing.JTextField();
+        txtNumSerial.setBackground(new Color(235, 237, 241));
+        txtMarca = new javax.swing.JTextField();
+        txtMarca.setBackground(new Color(235, 237, 241));
+        txtTipo = new javax.swing.JTextField();
+        txtTipo.setBackground(new Color(235, 237, 241));
+        txtModelo = new javax.swing.JTextField();
+        txtModelo.setBackground(new Color(235, 237, 241));
+        txtModelo.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusLost(FocusEvent e) {
         		jButtonCadastrar.setEnabled(true);
         	}
         });
-        jLabel8 = new javax.swing.JLabel();
-        jLabel8.setIcon(new ImageIcon(CadastroTecnico.class.getResource("/imgsCadastro/cliente.png")));
         jPanel2 = new javax.swing.JPanel();
         jPanel2.setBackground(new Color(235, 237, 241));
         jButtonCadastrar = new javax.swing.JButton();
@@ -96,10 +96,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		
         		String nome, cpf, endereco, telefone, email;
         		
-        		nome = txtNome.getText();
-                cpf = txtCpf.getText();
-                endereco = txtEndereco.getText();
-                telefone = txtTelefone.getText();
+        		nome = txtNumSerial.getText();
+                cpf = txtTipo.getText();
+                endereco = txtMarca.getText();
+                telefone = txtModelo.getText();
                 email = txtEmail.getText();
                 
                 Tecnico tec = new Tecnico(0, nome,cpf, endereco, telefone,email);
@@ -121,10 +121,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		
         	String nome, cpf, endereco, telefone, email;
                 
-            nome = txtNome.getText();
-            cpf = txtCpf.getText();
-            endereco = txtEndereco.getText();
-            telefone = txtTelefone.getText();
+            nome = txtNumSerial.getText();
+            cpf = txtTipo.getText();
+            endereco = txtMarca.getText();
+            telefone = txtModelo.getText();
             email = txtEmail.getText();
   
             Tecnico tec = new Tecnico(0, nome,cpf, endereco, telefone,email);
@@ -158,10 +158,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		
         		int selectRow = tableTecnicos.getSelectedRow();
         		
-        		txtNome.setText(tableTecnicos.getValueAt(selectRow, 1).toString());
-        		txtCpf.setText(tableTecnicos.getValueAt(selectRow, 2).toString());
-        		txtEndereco.setText(tableTecnicos.getValueAt(selectRow, 3).toString());
-        		txtTelefone.setText(tableTecnicos.getValueAt(selectRow, 4).toString());
+        		txtNumSerial.setText(tableTecnicos.getValueAt(selectRow, 1).toString());
+        		txtTipo.setText(tableTecnicos.getValueAt(selectRow, 2).toString());
+        		txtMarca.setText(tableTecnicos.getValueAt(selectRow, 3).toString());
+        		txtModelo.setText(tableTecnicos.getValueAt(selectRow, 4).toString());
         		txtEmail.setText(tableTecnicos.getValueAt(selectRow, 5).toString());
         		
         		
@@ -184,43 +184,40 @@ public class CadastroTecnico extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
         jLabel1.setForeground(new Color(55, 52, 95));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de Tecnico");
+        jLabel1.setText("Registro de Eletrônico");
 
         jLabel2.setForeground(new Color(55, 52, 95));
-        jLabel2.setText("Nome");
+        jLabel2.setText("Número Serial");
 
         jLabel3.setForeground(new Color(55, 52, 95));
-        jLabel3.setText("Endereço");
+        jLabel3.setText("Marca");
 
         jLabel4.setForeground(new Color(55, 52, 95));
-        jLabel4.setText("Cpf");
+        jLabel4.setText("Tipo");
 
         jLabel5.setForeground(new Color(55, 52, 95));
-        jLabel5.setText("Telefone");
+        jLabel5.setText("Modelo");
 
         jLabel6.setForeground(new Color(55, 52, 95));
-        jLabel6.setText("Email");
+        jLabel6.setText("Avarias");
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        txtNumSerial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        txtEndereco.addActionListener(new java.awt.event.ActionListener() {
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
-        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
-
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setBorder(new LineBorder(new Color(0, 0, 0), 0));
 
         jButtonCadastrar.setText("Salvar");
         jButtonCadastrar.setEnabled(false);
@@ -247,10 +244,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		
         		tec = tecDao.buscarTecnicos(id);
         		
-        		txtNome.setText(tec.getNome());
-        		txtCpf.setText(tec.getCpf());
-        		txtEndereco.setText(tec.getEndereco());
-        		txtTelefone.setText(tec.getTelefone());
+        		txtNumSerial.setText(tec.getNome());
+        		txtTipo.setText(tec.getCpf());
+        		txtMarca.setText(tec.getEndereco());
+        		txtModelo.setText(tec.getTelefone());
         		txtEmail.setText(tec.getEmail());
         		
         		jButtonExcluir.setEnabled(true);
@@ -258,15 +255,15 @@ public class CadastroTecnico extends javax.swing.JFrame {
 
         	}
         });
-        btnBuscar.setIcon(new ImageIcon(CadastroTecnico.class.getResource("/imgsCadastro/pesquisar.png")));
+        btnBuscar.setIcon(new ImageIcon(RegistroEletronico.class.getResource("/imgsCadastro/pesquisar.png")));
        
         btnLimpar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		txtNome.setText(null);
-        		txtCpf.setText(null);
-        		txtEndereco.setText(null);
-        		txtTelefone.setText(null);
+        		txtNumSerial.setText(null);
+        		txtTipo.setText(null);
+        		txtMarca.setText(null);
+        		txtModelo.setText(null);
         		txtEmail.setText(null);
         		
         		btnLimpar.setEnabled(false);
@@ -308,35 +305,55 @@ public class CadastroTecnico extends javax.swing.JFrame {
 
         tableTecnicos.setModel(new DefaultTableModel(
         	new Object[][] {
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
-        		{null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
+        		{null, null, null, null, null, null, null},
         	},
         	new String[] {
-        		"Id", "Nome", "Cpf", "Endereco", "Telefone", "Email"
+        		"N\u00FAm Serial", "Tipo", "Marca", "Modelo", "Cliente", "Servi\u00E7o", "T\u00E9cnico"
         	}
         ));
-        tableTecnicos.getColumnModel().getColumn(0).setPreferredWidth(40);
+        tableTecnicos.getColumnModel().getColumn(0).setPreferredWidth(50);
         tableTecnicos.getColumnModel().getColumn(1).setPreferredWidth(90);
         tableTecnicos.getColumnModel().getColumn(3).setPreferredWidth(90);
         jScrollPane2.setViewportView(tableTecnicos);
+        
+        JLabel lblNewLabel = new JLabel("Defeito");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNewLabel.setForeground(new Color(55, 52, 95));
+        
+        JTextArea textArea_1 = new JTextArea();
+        
+        textArea = new JTextArea();
+        
+        lblNewLabel_1 = new JLabel("Técnico Responsável");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNewLabel_1.setForeground(new Color(55, 52, 95));
+        
+        spinner = new JSpinner();
+        
+        lblNewLabel_2 = new JLabel("Serviço");
+        lblNewLabel_2.setForeground(new Color(55, 52, 95));
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        spinner_1 = new JSpinner();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
@@ -347,30 +364,39 @@ public class CadastroTecnico extends javax.swing.JFrame {
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
         				.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGap(20)
-        					.addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-        					.addGap(23)
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
+        						.addComponent(jLabel2)
+        						.addComponent(txtMarca)
+        						.addComponent(txtNumSerial, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+        						.addComponent(jLabel3)
+        						.addComponent(jLabel6)
+        						.addComponent(textArea))
+        					.addGap(18)
         					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
         						.addGroup(jPanel1Layout.createSequentialGroup()
-        							.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
-        								.addComponent(jLabel2, Alignment.LEADING)
-        								.addComponent(jLabel6, Alignment.LEADING)
-        								.addComponent(txtNome, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-        								.addComponent(txtEndereco, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-        								.addComponent(txtEmail, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
-        							.addGap(18))
-        						.addGroup(jPanel1Layout.createSequentialGroup()
-        							.addComponent(jLabel3)
-        							.addPreferredGap(ComponentPlacement.RELATED)))
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
-        						.addComponent(jLabel4)
-        						.addGroup(jPanel1Layout.createSequentialGroup()
-        							.addPreferredGap(ComponentPlacement.RELATED)
         							.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(jLabel5)
-        								.addComponent(txtTelefone, 142, 142, Short.MAX_VALUE)))
-        						.addComponent(txtCpf))
-        					.addContainerGap())
+        								.addGroup(jPanel1Layout.createSequentialGroup()
+        									.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+        										.addGroup(jPanel1Layout.createSequentialGroup()
+        											.addComponent(jLabel5)
+        											.addPreferredGap(ComponentPlacement.RELATED, 151, Short.MAX_VALUE))
+        										.addGroup(Alignment.LEADING, jPanel1Layout.createParallelGroup(Alignment.TRAILING, false)
+        											.addComponent(textArea_1, Alignment.LEADING)
+        											.addComponent(txtModelo, Alignment.LEADING)
+        											.addComponent(txtTipo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)))
+        									.addPreferredGap(ComponentPlacement.UNRELATED))
+        								.addGroup(jPanel1Layout.createSequentialGroup()
+        									.addComponent(jLabel4)
+        									.addGap(188)))
+        							.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
+        								.addComponent(spinner, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        								.addComponent(lblNewLabel_1)
+        								.addComponent(lblNewLabel_2)
+        								.addComponent(spinner_1))
+        							.addGap(33))
+        						.addGroup(jPanel1Layout.createSequentialGroup()
+        							.addComponent(lblNewLabel)
+        							.addContainerGap())))
         				.addGroup(jPanel1Layout.createSequentialGroup()
         					.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         					.addContainerGap())))
@@ -380,36 +406,38 @@ public class CadastroTecnico extends javax.swing.JFrame {
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(jLabel1)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGap(10)
-        					.addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(jLabel2)
-        						.addComponent(jLabel4))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(txtCpf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGap(3)
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(jLabel3)
-        						.addComponent(jLabel5))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(jPanel1Layout.createSequentialGroup()
-        							.addComponent(txtEndereco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(jLabel6))
-        						.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel2)
+        				.addComponent(jLabel4)
+        				.addComponent(lblNewLabel_1))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(txtNumSerial, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(txtTipo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(3)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel3)
+        				.addComponent(jLabel5)
+        				.addComponent(lblNewLabel_2))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(txtMarca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(txtModelo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(spinner_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel6)
+        				.addComponent(lblNewLabel))
+        			.addGap(4)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(textArea_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(textArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addGap(18)
         			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
-        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
         			.addContainerGap())
         );
         jPanel1.setLayout(jPanel1Layout);
@@ -444,10 +472,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
         //executa quando clica no botão
     	String nome, cpf, endereco, telefone, email;
     	
-    	nome = txtNome.getText();
-    	cpf = txtCpf.getText();
-    	endereco = txtEndereco.getText();
-    	telefone = txtTelefone.getText();
+    	nome = txtNumSerial.getText();
+    	cpf = txtTipo.getText();
+    	endereco = txtMarca.getText();
+    	telefone = txtModelo.getText();
     	email = txtEmail.getText();
     	
     	
@@ -459,10 +487,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
     		 
              JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso!","Resultado",JOptionPane.INFORMATION_MESSAGE);
              
-             txtNome.setText(null);
-         	 txtCpf.setText(null);
-         	 txtEndereco.setText(null);
-         	 txtTelefone.setText(null);
+             txtNumSerial.setText(null);
+         	 txtTipo.setText(null);
+         	 txtMarca.setText(null);
+         	 txtModelo.setText(null);
          	 txtEmail.setText(null);
          	 
          	 preencherTbl();
@@ -505,13 +533,13 @@ public class CadastroTecnico extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEletronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEletronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEletronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroTecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEletronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -519,7 +547,7 @@ public class CadastroTecnico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroTecnico().setVisible(true);
+                new RegistroEletronico().setVisible(true);
             }
         });
     }
@@ -534,44 +562,47 @@ public class CadastroTecnico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableTecnicos;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtEndereco;
-    private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JTextField txtNumSerial;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtTipo;
+    private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtBuscarId;
+    private JTextArea textArea;
+    private JLabel lblNewLabel_1;
+    private JSpinner spinner;
+    private JLabel lblNewLabel_2;
+    private JSpinner spinner_1;
     // End of variables declaration//GEN-END:variables
 	public void exibeMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);
 	}
 
 	public javax.swing.JTextField getjTextFieldNome() {
-		return txtNome;
+		return txtNumSerial;
 	}
 
 	public void setjTextFieldNome(javax.swing.JTextField jTextFieldNome) {
-		this.txtNome = jTextFieldNome;
+		this.txtNumSerial = jTextFieldNome;
 	}
 
 	public javax.swing.JTextField getjTextEndereco() {
-		return txtEndereco;
+		return txtMarca;
 	}
 
 	public void setjTextEndereco(javax.swing.JTextField jTextEndereco) {
-		this.txtEndereco = jTextEndereco;
+		this.txtMarca = jTextEndereco;
 	}
 
 	public javax.swing.JTextField getjTextFieldCpf() {
-		return txtCpf;
+		return txtTipo;
 	}
 
 	public void setjTextFieldCpf(javax.swing.JTextField jTextFieldCpf) {
-		this.txtCpf = jTextFieldCpf;
+		this.txtTipo = jTextFieldCpf;
 	}
 
 	public javax.swing.JTextField getjTextFieldEmail() {
@@ -583,10 +614,10 @@ public class CadastroTecnico extends javax.swing.JFrame {
 	}
 
 	public javax.swing.JTextField getjTextFieldTelefone() {
-		return txtTelefone;
+		return txtModelo;
 	}
 
 	public void setjTextFieldTelefone(javax.swing.JTextField jTextFieldTelefone) {
-		this.txtTelefone = jTextFieldTelefone;
+		this.txtModelo = jTextFieldTelefone;
 	}
 }
