@@ -350,11 +350,24 @@ public class CadastroTecnico extends javax.swing.JFrame {
         
         txtId = new JTextField();
         txtId.setColumns(10);
+        
+        btnNewButton = new JButton("Voltar");
+        btnNewButton.addActionListener(new ActionListener() {
+        	@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+        		new Main().show();
+        		dispose();
+        	}
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btnNewButton)
+        			.addContainerGap())
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
@@ -394,7 +407,9 @@ public class CadastroTecnico extends javax.swing.JFrame {
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
-        			.addComponent(jLabel1)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel1)
+        				.addComponent(btnNewButton))
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(jPanel1Layout.createSequentialGroup()
         					.addGap(10)
@@ -566,6 +581,7 @@ public class CadastroTecnico extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefone;
     private javax.swing.JTextField txtBuscarId;
     private JTextField txtId;
+    private JButton btnNewButton;
     // End of variables declaration//GEN-END:variables
 	public void exibeMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);

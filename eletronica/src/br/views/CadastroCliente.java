@@ -338,11 +338,24 @@ public class CadastroCliente extends javax.swing.JFrame {
         tableClientes.getColumnModel().getColumn(1).setPreferredWidth(90);
         tableClientes.getColumnModel().getColumn(3).setPreferredWidth(90);
         jScrollPane2.setViewportView(tableClientes);
+        
+        JButton btnSair = new JButton("Voltar");
+        btnSair.addActionListener(new ActionListener() {
+        	@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+        		new Main().show();
+        		dispose();
+        	}
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btnSair)
+        			.addContainerGap())
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
@@ -380,7 +393,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
-        			.addComponent(jLabel1)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel1)
+        				.addComponent(btnSair))
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(jPanel1Layout.createSequentialGroup()
         					.addGap(10)
@@ -410,7 +425,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         			.addGap(18)
         			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
-        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
         			.addContainerGap())
         );
         jPanel1.setLayout(jPanel1Layout);

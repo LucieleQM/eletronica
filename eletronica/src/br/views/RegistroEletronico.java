@@ -352,11 +352,24 @@ public class RegistroEletronico extends javax.swing.JFrame {
         JLabel lblNewLabel_1 = new JLabel("");
         
         JLabel lblNewLabel_2 = new JLabel("");
+        
+        btnNewButton = new JButton("Voltar");
+        btnNewButton.addActionListener(new ActionListener() {
+        	@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+        		new Main().show();
+        		dispose();
+        	}
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+        	jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btnNewButton)
+        			.addContainerGap())
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
@@ -382,8 +395,8 @@ public class RegistroEletronico extends javax.swing.JFrame {
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(lblNewLabel)
-        			.addContainerGap(504, Short.MAX_VALUE))
-        		.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        			.addContainerGap(473, Short.MAX_VALUE))
+        		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(txtCpf, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
@@ -394,7 +407,9 @@ public class RegistroEletronico extends javax.swing.JFrame {
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
-        			.addComponent(jLabel1)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel1)
+        				.addComponent(btnNewButton))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jLabel2)
@@ -560,6 +575,7 @@ public class RegistroEletronico extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscarNumSerial;
     private JLabel lblNewLabel;
     private JTextField txtCpf;
+    private JButton btnNewButton;
     // End of variables declaration//GEN-END:variables
 	public void exibeMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);

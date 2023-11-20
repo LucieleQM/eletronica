@@ -2,6 +2,7 @@ package br.main;
 
 import br.views.CadastroCliente;
 import br.views.CadastroTecnico;
+import br.views.Main;
 import br.views.RegistroEletronico;
 import br.views.RegistroServico;
 
@@ -10,7 +11,11 @@ public class Principal {
 	        
 	        CadastroCliente formCliente = new CadastroCliente();
 	        
-	        formCliente.preencherTbl();
+	        Main main = new Main();
+	        
+	        main.setVisible(true);
+	        
+	      /*  formCliente.preencherTbl();
 	        
 	        formCliente.setVisible(true);
 	        
@@ -35,8 +40,7 @@ public class Principal {
 	        
 	        formEltronico.preencherTbl();
 	        
-	        formEltronico.setVisible(true);
-	        
-	    }
-	 
+	        formEltronico.setVisible(true);*/
+
+	 }
 }

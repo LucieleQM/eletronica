@@ -315,11 +315,19 @@ public class RegistroServico extends javax.swing.JFrame {
         
         txtId = new JTextField();
         txtId.setColumns(10);
+        
+        btnNewButton = new JButton("Voltar");
+        btnNewButton.addActionListener(new ActionListener() {
+        	@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+        		new Main().show();
+        		dispose();
+        	}
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
@@ -340,20 +348,30 @@ public class RegistroServico extends javax.swing.JFrame {
         			.addContainerGap()
         			.addComponent(jLabel4)
         			.addContainerGap(505, Short.MAX_VALUE))
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 357, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+        		.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(txtId, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(lblNewLabel))
-        			.addGap(49))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 357, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(txtId, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(lblNewLabel))
+        					.addGap(49))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addComponent(btnNewButton)
+        					.addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addContainerGap()
-        			.addComponent(jLabel1)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel1)
+        				.addComponent(btnNewButton))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jLabel2)
@@ -375,7 +393,7 @@ public class RegistroServico extends javax.swing.JFrame {
         			.addGap(26)
         			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
-        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+        			.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
         			.addContainerGap())
         );
         jPanel1.setLayout(jPanel1Layout);
@@ -499,6 +517,7 @@ public class RegistroServico extends javax.swing.JFrame {
     private JTextArea txtDescricao;
     private JLabel lblNewLabel;
     private JTextField txtId;
+    private JButton btnNewButton;
     // End of variables declaration//GEN-END:variables
 	public void exibeMensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);

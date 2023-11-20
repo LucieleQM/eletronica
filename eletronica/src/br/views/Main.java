@@ -7,6 +7,10 @@ import java.awt.Color;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -32,11 +36,32 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel1.setFont(new Font("Arial Black", Font.BOLD, 13));
+        jLabel1.setForeground(new Color(58, 39, 71));
         jButton2 = new javax.swing.JButton();
+        jButton2.setIcon(new ImageIcon(Main.class.getResource("/imgsCadastro/Captura de tela 2023-11-17 222008_1.png")));
         jButton1 = new javax.swing.JButton();
+        jButton1.setIcon(new ImageIcon(Main.class.getResource("/imgsCadastro/Captura de tela 2023-11-18 164907.png")));
         jButton3 = new javax.swing.JButton();
+        jButton3.setIcon(new ImageIcon(Main.class.getResource("/imgsCadastro/Captura de tela 2023-11-17 221852.png")));
+        jButton3.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CadastroTecnico cadastroTecnico = new CadastroTecnico();
+        		cadastroTecnico.preencherTbl();
+                cadastroTecnico.setVisible(true);
+        	}
+        });
         jButton4 = new javax.swing.JButton();
+        jButton4.setIcon(new ImageIcon(Main.class.getResource("/imgsCadastro/Captura de tela 2023-11-18 165229.png")));
+        jButton4.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		RegistroServico rs = new RegistroServico();
+        		rs.preencherTbl();
+                rs.setVisible(true);
+        	}
+        });
         jButton5 = new javax.swing.JButton();
+        jButton5.setIcon(new ImageIcon(Main.class.getResource("/imgsCadastro/Captura de tela 2023-11-18 165238.png")));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,45 +90,41 @@ public class Main extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
+        	layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
-        					.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(17)
-        					.addComponent(jButton5))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(17)
-        					.addComponent(jButton4))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(16)
-        					.addComponent(jButton1))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(17)
-        					.addComponent(jButton3))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(15)
-        					.addComponent(jButton2)))
+        			.addContainerGap()
+        			.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
         			.addContainerGap())
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(29)
+        			.addComponent(jButton2)
+        			.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+        			.addComponent(jButton3)
+        			.addGap(87)
+        			.addComponent(jButton1)
+        			.addGap(70))
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(131)
+        			.addComponent(jButton5)
+        			.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+        			.addComponent(jButton4)
+        			.addGap(155))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(jLabel1)
-        			.addGap(40)
-        			.addComponent(jButton2)
-        			.addGap(21)
-        			.addComponent(jButton3)
-        			.addGap(12)
-        			.addComponent(jButton1)
-        			.addGap(15)
-        			.addComponent(jButton4)
-        			.addGap(10)
-        			.addComponent(jButton5)
-        			.addContainerGap(58, Short.MAX_VALUE))
+        			.addGap(84)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jButton2)
+        				.addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jButton1))
+        			.addGap(65)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jButton4)
+        				.addComponent(jButton5))
+        			.addGap(76))
         );
         getContentPane().setLayout(layout);
 
@@ -113,12 +134,16 @@ public class Main extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         CadastroCliente cadastroCliente = new CadastroCliente();
+        cadastroCliente.preencherTbl();
         cadastroCliente.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new Eletronicos().setVisible(true);
+    	RegistroEletronico re = new RegistroEletronico();
+    	re.preencherTbl();
+        re.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -163,5 +188,4 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    // End of variables declaration//GEN-END:variables
 }
